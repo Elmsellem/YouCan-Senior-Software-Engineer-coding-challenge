@@ -1,0 +1,21 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__.'/vendor/autoload.php';
+
+use Illuminate\Container\Container;
+use Illuminate\Events\Dispatcher;
+use Illuminate\Console\Application;
+use YouCan\Commands\CalculateDistanceCommand;
+use YouCan\Services\DistanceCalculator\CalculateDistanceService;
+use YouCan\Services\DistanceCalculator\ICalculateDistanceService;
+use YouCan\Services\GoogleMaps\FindLocationService;
+use YouCan\Services\GoogleMaps\IApiService;
+use YouCan\Services\GoogleMaps\ApiService;
+use YouCan\Services\GoogleMaps\IFindLocationService;
+
+$artisan = require_once __DIR__ . '/bootstrap.php';
+
+$artisan->resolve(CalculateDistanceCommand::class);
+
+$artisan->run();
